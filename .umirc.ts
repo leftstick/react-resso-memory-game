@@ -2,7 +2,7 @@ import { defineConfig } from 'umi'
 
 export default defineConfig({
   hash: true,
-  publicPath: '/resso-memory-game/',
-  base: '/resso-memory-game/',
-  title: 'Resso Memory Game'
+  publicPath: '/react-resso-memory-game/',
+  base: '/react-resso-memory-game/',
+  title: 'Resso Memory Game',
 })
