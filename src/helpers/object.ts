@@ -44,3 +44,7 @@ export function updateItemInArray<T>(items: T[], identifer: (t: T) => boolean, r
     return it
   })
 }
+
+export function updateItemsInArray<T>(items: T[], updater: (t: T) => T): T[] {
+  return items.map(updater)
+}

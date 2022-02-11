@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { getImage, pick } from '@/helpers'
+import { getImage } from '@/helpers'
 import { gameStore } from '@/stores'
 import { ICard } from '@/ITypes'
 

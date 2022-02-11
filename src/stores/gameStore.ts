@@ -1,7 +1,6 @@
-import { useState, useCallback, useRef } from 'react'
 import resso from 'resso'
 
-import { shuffleCards, getFromStorage, saveToStorage, updateItemInArray, isEmpty } from '@/helpers'
+import { shuffleCards, getFromStorage, saveToStorage, updateItemInArray, updateItemsInArray, isEmpty } from '@/helpers'
 import { STATUS, ICard, IGameStore } from '@/ITypes'
 
 const BEST_SCORE_KEY = 'memory.game.best.score'
@@ -41,6 +40,9 @@ export const gameStore = resso<IGameStore>({
   },
 
   flipCard: (card: ICard) => {
+    if (card.flipped) {
+      return
+    }
     gameStore.cards = updateItemInArray(gameStore.cards, (c) => c.id === card.id, { flipped: true })
     if (gameStore.status === STATUS.READY) {
       gameStore.startGame()
@@ -64,10 +66,21 @@ export const gameStore = resso<IGameStore>({
     gameStore.lastCard = undefined
 
     setTimeout(() => {
-      gameStore.cards = updateItemInArray(gameStore.cards, (c) => c.id === cachedLastCard.id, {
-        flipped: false,
+      gameStore.cards = updateItemsInArray(gameStore.cards, (c) => {
+        if (c.id === cachedLastCard.id) {
+          return {
+            ...c,
+            flipped: !c.flipped,
+          }
+        }
+        if (c.id === card.id) {
+          return {
+            ...c,
+            flipped: !c.flipped,
+          }
+        }
+        return c
       })
-      gameStore.cards = updateItemInArray(gameStore.cards, (c) => c.id === card.id, { flipped: false })
     }, 1000)
   },
 })
