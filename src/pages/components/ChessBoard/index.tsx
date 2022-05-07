@@ -1,5 +1,4 @@
 import React from 'react'
-import { pick } from '@/helpers'
 import { gameStore } from '@/stores'
 
 import Card from '../Card'
