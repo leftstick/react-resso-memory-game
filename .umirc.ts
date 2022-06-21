@@ -1,6 +1,7 @@
 import { defineConfig } from 'umi'
 
 export default defineConfig({
+  npmClient: 'pnpm',
   hash: true,
   publicPath: '/react-resso-memory-game/',
   base: '/react-resso-memory-game/',
