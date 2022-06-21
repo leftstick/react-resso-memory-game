@@ -1,3 +1,5 @@
-const codingStyle = require('react-coding-style')
-
-module.exports = codingStyle.eslint
+// .eslintrc.js
+module.exports = {
+  // Umi 项目
+  extends: require.resolve('umi/eslint'),
+};

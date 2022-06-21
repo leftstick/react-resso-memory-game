@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "license": "GPL-3.0",
   "scripts": {
-    "dev": "umi dev",
     "build": "umi build",
+    "deploy": "pnpm build && gh-pages -d dist",
+    "dev": "umi dev",
     "postinstall": "husky install && umi setup",
-    "start": "npm run dev",
-    "deploy": "pnpm build && gh-pages -d dist"
+    "start": "npm run dev"
   },
   "dependencies": {
     "ahooks": "^3.5.0",
@@ -19,10 +19,15 @@
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
     "@types/react": "^18.0.14",
+    "@umijs/lint": "^4.0.0",
+    "eslint": "^8.18.0",
     "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
-    "react-coding-style": "^1.3.1",
+    "prettier": "^2",
+    "prettier-plugin-organize-imports": "^2",
+    "prettier-plugin-packagejson": "^2",
+    "stylelint": "^14.9.1",
     "umi": "^4.0.0"
   }
 }
